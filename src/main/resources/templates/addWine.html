@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center">
+    <h1> Dodaj wino</h1>
+    <form action="#" th:action ="@{/wines/add}" method ="POST" th:object="${wine}">
+        <div class="form-group">
+            <label>Nazwa wina</label>
+            <input type="text" th:field="*{name}" placeholder="Nazwa wina"
+                   class ="form control mb-4 col-4"/><br/>
+        </div>
+        <div class="form-group">
+            <label>Cena</label>
+            <input type="number" step ="0.01" th:field="*{price}" placeholder="cena"
+                   class ="form control mb-4 col-4"/><br/>
+        </div>
+        <div class="form-group">
+            <label>Ilosc </label>
+            <input type="number" th:field="*{amount}" placeholder="ilosc"
+                   class ="form control mb-4 col-4"/><br/>
+        </div>
+        <div class="form-group">
+            <label>Data ostatniej dostawy </label>
+            <input type="date" th:field="*{date_last_delivery}" placeholder="Numer telefonu"
+                   class ="form control mb-4 col-4"/><br/>
+        </div>
+        <div class="form-group">
+            <label>Wskaznik rotacji</label>
+            <input type="number" step ="0.01" th:field="*{inventory_turnover}" placeholder="wskaznik rotacji"
+                   class ="form control mb-4 col-4"/><br/>
+        </div>
+        <div class="form-group">
+            <label>Producent </label>
+            <select th:field="*{producer}">
+                <th:block th:each ="producer : ${producers} ">
+                    <option th:text="${producer.name}" th:value="${producer.id}"/>
+                </th:block>
+            </select>
+
+        </div>
+        <button type="submit" class ="btn btn-info col-2">Zapisz</button>
+    </form>
+</div>
+
+</body>
+</html>

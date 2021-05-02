@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body >
+
+<div align="center">
+
+    <h1>Wina</h1>
+    <div class="container">
+        <a th:href="@{/home}" class="btn btn-info col-3">Strona glowna</a>
+        <div class ="card">
+            <div class="card-block">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Cena</th>
+                        <th>Ilosc</th>
+                        <th>Data ostatniej dostawy </th>
+                        <th>Wskaznik rotacji</th>
+                        <th>Producent</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="wine : ${wines} ">
+                        <td th:text="${wine.name}"></td>
+                        <td th:text="${wine.price}"></td>
+                        <td th:text="${wine.amount}"></td>
+                        <td th:text="${wine.date_last_delivery}"></td>
+                        <td th:text="${wine.inventory_turnover}"></td>
+                        <td th:text="${wine.producer}"></td>
+                        <td> <a th:href="@{/wines/formEdit/{id}(id=${wines.id})}" class="btn btn-primary">Edytuj</a>
+                            <a th:href="@{/wines/delete/{id}(id=${wines.id})}" class="btn btn-primary">Usun</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/wines/form}" class="btn btn-info col-3">Dodaj wino</a>
+</div>
+
+</body>
