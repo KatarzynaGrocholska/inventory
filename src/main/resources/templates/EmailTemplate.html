@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div>
+
+      <p>Koncza sie zapasy wina</p>
+      <table class="table table-striped">
+          <thead>
+          <tr>
+              <th>Brakujace wina</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="wine : ${wines} ">
+              <td th:text="${wine.name}"></td>
+
+          </tr>
+          </tbody>
+      </table>
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Inventory</title>
@@ -13,7 +14,7 @@
 
     <h1>Wina</h1>
     <div class="container">
-        <a th:href="@{/home}" class="btn btn-info col-3">Strona glowna</a>
+        <a th:href="@{/}" class="btn btn-info col-3">Strona glowna</a>
         <div class ="card">
             <div class="card-block">
                 <table class="table table-striped">
@@ -25,7 +26,8 @@
                         <th>Data ostatniej dostawy </th>
                         <th>Wskaznik rotacji</th>
                         <th>Producent</th>
-                        <th> </th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')"> </th>
+                        <th sec:authorize="hasRole('ROLE_USER')"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,18 +36,19 @@
                         <td th:text="${wine.price}"></td>
                         <td th:text="${wine.amount}"></td>
                         <td th:text="${wine.date_last_delivery}"></td>
-                        <td th:text="${wine.inventory_turnover}"></td>
-                        <td th:text="${wine.producer}"></td>
-                        <td> <a th:href="@{/wines/formEdit/{id}(id=${wines.id})}" class="btn btn-primary">Edytuj</a>
-                            <a th:href="@{/wines/delete/{id}(id=${wines.id})}" class="btn btn-primary">Usun</a>
+                        <td th:text="${wine.monthly}"></td>
+                        <td th:text="${wine.producer.name}"></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/wines/formEdit/{id}(id=${wine.id})}" class="btn btn-primary">Edytuj</a>
+                            <a th:href="@{/wines/delete/{id}(id=${wine.id})}" class="btn btn-primary">Usun</a>
                         </td>
+                        <td sec:authorize="hasRole('ROLE_USER')"> <a th:href="@{/wines/formEditUser/{id}(id=${wine.id})}" class="btn btn-primary">Zmien ilosc</a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <a th:href="@{/wines/form}" class="btn btn-info col-3">Dodaj wino</a>
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/wines/form}" class="btn btn-info col-3">Dodaj wino</a>
 </div>
 
 </body>

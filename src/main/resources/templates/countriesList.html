@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <title>Inventory</title>
@@ -13,7 +15,7 @@
 
     <h1>Kraje</h1>
     <div class="container">
-        <a th:href="@{/home}" class="btn btn-info col-3">Strona glowna</a>
+        <a th:href="@{/}" class="btn btn-info col-3">Strona glowna</a>
         <div class ="card">
             <div class="card-block">
     <table class="table table-striped">
@@ -22,7 +24,7 @@
     <th>Nazwa</th>
     <th>Waluta</th>
     <th>Czas dostawy</th>
-    <th> </th>
+    <th sec:authorize="hasRole('ROLE_ADMIN')"> </th>
 </tr>
         </thead>
         <tbody>
@@ -30,7 +32,7 @@
     <td th:text="${country.country_name}"></td>
     <td th:text="${country.currency}"></td>
     <td th:text="${country.days_delivery}"></td>
-    <td> <a th:href="@{/countries/formEdit/{id}(id=${country.id})}" class="btn btn-primary">Edytuj</a>
+    <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/countries/formEdit/{id}(id=${country.id})}" class="btn btn-primary">Edytuj</a>
         <a th:href="@{/countries/delete/{id}(id=${country.id})}" class="btn btn-primary">Usun</a>
     </td>
 </tr>
@@ -38,8 +40,8 @@
     </table>
             </div>
         </div>
-    </div>
-    <a th:href="@{/countries/form}" class="btn btn-info col-3">Dodaj kraj</a>
+    </div >
+    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/countries/form}" class="btn btn-info col-3">Dodaj kraj</a>
 </div>
 
 </body>

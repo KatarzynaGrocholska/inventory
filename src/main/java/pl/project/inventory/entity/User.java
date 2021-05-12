@@ -5,12 +5,16 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employees")
-public class Employee {
+@Table(name = "users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @NotNull
+    private String username;
+
 
     @NotNull
     private String first_name;
@@ -24,9 +28,33 @@ public class Employee {
     @NotNull
     private String password;
 
-    public Employee (){
+    @NotNull
+    private String role;
+
+    @NotNull
+    private boolean enabled;
+
+    public User (){
 
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
 
     public int getId() {
         return id;
@@ -67,4 +95,13 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 }

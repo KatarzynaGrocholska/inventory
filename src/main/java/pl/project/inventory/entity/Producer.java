@@ -77,4 +77,16 @@ public class Producer {
     public void setCountry(Country country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", adress='" + adress + '\'' +
+                ", email='" + email + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", country=" + country +
+                '}';
+    }
 }

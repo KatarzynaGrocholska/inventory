@@ -56,4 +56,14 @@ public class Country {
     public void setDays_delivery(int days_delivery) {
         this.days_delivery = days_delivery;
     }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", country_name='" + country_name + '\'' +
+                ", currency='" + currency + '\'' +
+                ", days_delivery=" + days_delivery +
+                '}';
+    }
 }

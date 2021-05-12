@@ -52,6 +52,8 @@ public class ProducerController {
             @GetMapping(path = "/producers/formEdit/{id}")
             public String UpdateForm(@PathVariable(value = "id") Integer id, Model model){
                 Producer producer =producerService.getProducerById(id);
+                List<Country> countries= countryService.getAllCountries();
+                model.addAttribute("countries", countries);
                 model.addAttribute("producer",producer);
                 return "editProducer";
             }

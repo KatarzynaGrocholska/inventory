@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Inventory</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 </head>
 <body>
-$END$
+<form action="#" th:action ="@{/wines/addByUser}" method ="post" th:object="${wine}">
+<div align="center">
+  <h1> Edytuj wino</h1>
+  <input type="hidden" th:field ="*{id}">
+  <input type="hidden" th:field ="*{name}">
+  <input type="hidden" th:field ="*{price}">
+    <div class ="card">
+      <div class="card-block">
+            <td>
+<label>Ilosc</label>
+            <input type="number" th:field="*{amount}"/>
+
+
+            </td>
+
+
+      </div>
+    </div>
+  <input type="hidden" th:field ="*{date_last_delivery}">
+  <input type="hidden" th:field ="*{monthly}">
+  <input type="hidden" th:field ="*{producer.name}">
+  <button type="submit" class ="btn btn-info col-2">Zapisz zmiany</button>
+
+</div>
+</form>
+
+
+
 </body>
 </html>

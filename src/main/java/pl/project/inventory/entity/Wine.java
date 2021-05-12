@@ -1,11 +1,11 @@
 package pl.project.inventory.entity;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
+
 @Table(name = "wines")
 public class Wine {
 
@@ -13,18 +13,18 @@ public class Wine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+@NotNull
     private String name;
 
-    @NotNull
+
     private double price;
 
-    @NotNull
+
     private int amount;
 
-    private Date date_last_delivery;
+    private String date_last_delivery;
 
-    private double inventory_turnover;
+    private double monthly;
 
     @ManyToOne
     private Producer producer;
@@ -66,20 +66,20 @@ public class Wine {
         this.amount = amount;
     }
 
-    public Date getDate_last_delivery() {
+    public String getDate_last_delivery() {
         return date_last_delivery;
     }
 
-    public void setDate_last_delivery(Date date_last_delivery) {
+    public void setDate_last_delivery(String date_last_delivery) {
         this.date_last_delivery = date_last_delivery;
     }
 
-    public double getInventory_turnover() {
-        return inventory_turnover;
+    public double getMonthly() {
+        return monthly;
     }
 
-    public void setInventory_turnover(double inventory_turnover) {
-        this.inventory_turnover = inventory_turnover;
+    public void setMonthly(double monthly) {
+        this.monthly = monthly;
     }
 
     public Producer getProducer() {
@@ -88,5 +88,18 @@ public class Wine {
 
     public void setProducer(Producer producer) {
         this.producer = producer;
+    }
+
+    @Override
+    public String toString() {
+        return "Wine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", amount=" + amount +
+                ", date_last_delivery=" + date_last_delivery +
+                ", monthly=" + monthly +
+                ", producer=" + producer +
+                '}';
     }
 }
