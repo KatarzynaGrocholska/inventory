@@ -14,12 +14,12 @@
     <h1> Edytuj wino</h1>
     <form action="#" th:action ="@{/wines/add}" method ="post" th:object="${wine}">
         <input type="hidden" th:field ="*{id}">
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="form-group">
+        <div  class="form-group">
             <label>Nazwa wina</label>
             <input type="text" th:field="*{name}"
                    class ="form control mb-4 col-4"/><br/>
         </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="form-group">
+        <div class="form-group">
             <label>Cena</label>
             <input type="number" step ="0.01" th:field="*{price}"
                    class ="form control mb-4 col-4"/><br/>
@@ -29,17 +29,17 @@
             <input type="number" th:field="*{amount}"
                    class ="form control mb-4 col-4"/><br/>
         </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="form-group">
+        <div class="form-group">
             <label>Data ostatniej dostawy </label>
             <input type="date" th:field="*{date_last_delivery}"
                    class ="form control mb-4 col-4"/><br/>
         </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="form-group">
+        <div class="form-group">
             <label>Zapotrzebowanie miesieczne</label>
             <input type="number"  th:field="*{monthly}"
                    class ="form control mb-4 col-4"/><br/>
         </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')" class="form-group">
+        <div class="form-group">
             <label>Producent </label>
             <select th:field="*{producer}">
                 <th:block th:each ="producer : ${producers} ">

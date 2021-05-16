@@ -29,7 +29,7 @@ public class Wine {
 
     private int monthly;
 
-   @ManyToOne(cascade=CascadeType.ALL)
+   @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "producer_id")
     private Producer producer;
 

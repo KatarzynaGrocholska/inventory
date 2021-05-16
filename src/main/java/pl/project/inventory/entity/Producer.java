@@ -1,10 +1,10 @@
 package pl.project.inventory.entity;
 
 import com.sun.istack.NotNull;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,13 +27,12 @@ public class Producer {
     @NotNull
     private String phone_number;
 
-    @ManyToOne (cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
    @JoinColumn(name = "country_id")
    private Country country;
 
-    @OneToMany(mappedBy = "producer",orphanRemoval = true)
-    @MapKeyJoinColumn(name = "wine_id")
-    private List<Wine> wines;
+    @OneToMany(mappedBy ="producer" ,orphanRemoval = true)
+    private List<Wine> wines= new ArrayList<>();
 
     public Producer(){
 

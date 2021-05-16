@@ -1,8 +1,11 @@
 package pl.project.inventory.entity;
 
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,18 +16,20 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull
+   @NotNull
+   //@NotBlank(message = "Nazwa kraju jest konieczna")
     private String country_name;
 
+    //@NotBlank(message = "Nazwa waluty jest konieczna")
     @NotNull
     private String currency;
 
+    //@NotBlank(message = "Ilosc dni potrzebnych na dostawe jest konieczna")
     @NotNull
     private int days_delivery;
 
-    @OneToMany(mappedBy ="country" ,orphanRemoval = true)
-    @MapKeyJoinColumn(name = "producer_id")
-    private List<Producer> producers;
+    @OneToMany( mappedBy ="country" ,orphanRemoval = true)
+    private List<Producer> producers= new ArrayList<>();
 
     public Country(){
 

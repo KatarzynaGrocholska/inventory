@@ -69,18 +69,18 @@ public class WineController {
         return "redirect:/wines/list";
     }
 
-//    @GetMapping(path = "/wines/formEditUser/{id}")
-//    public String UpdateFormUser(@PathVariable(value = "id") Integer id, Model model){
-//        Wine wine =wineService.getWineById(id);
-//        model.addAttribute("wine",wine);
-//        return "editWineUser";
-//    }
-//    @RequestMapping(path = "/wines/addByUser" , method = RequestMethod.POST)
-//    public String addToWinesByUser(@ModelAttribute("wine") Wine wine ){
-//
-//        wineService.saveWine(wine);
-//
-//        return "redirect:/wines/list";
-//    }
+    @GetMapping(path = "/wines/formEditUser/{id}")
+    public String UpdateFormUser(@PathVariable(value = "id") Integer id, Model model){
+        Wine wine =wineService.getWineById(id);
+        model.addAttribute("wine",wine);
+        return "editWineUser";
+    }
+    @RequestMapping(path = "/wines/addByUser" , method = RequestMethod.POST)
+    public String addToWinesByUser(@ModelAttribute("wine") Wine wine ){
+
+        wineService.saveWine(wine);
+
+        return "redirect:/wines/list";
+    }
 
     }
