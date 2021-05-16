@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Inventory</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+    </head>
+
+</head>
+
+<body>
+<div align="center">
+    <table method="GET" class="table table-striped">
+        <thead>
+        <tr>
+            <p>Czy chcesz usunac? Usuniecie producenta z listy spowoduje usuniecie win
+                z nim powiazanych</p>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+            <td> <a th:href="@{/producers/list}" class="btn btn-primary">Nie</a>
+                <a th:href="@{/producers/delete/{id}(id=${producer.id})}" class="btn btn-primary">Tak</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

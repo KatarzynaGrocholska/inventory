@@ -58,6 +58,14 @@ public class ProducerController {
                 return "editProducer";
             }
 
+    @GetMapping (path="/producers/deleteConsent/{id}")
+    public String delConsent(@PathVariable(value = "id") Integer id, Model model) {
+        Producer producer = producerService.getProducerById(id);
+        model.addAttribute("producer", producer);
+
+        return "ConsentDeleteProducer";
+    }
+
             @GetMapping(path = "/producers/delete/{id}")
             public String delete(@PathVariable(value = "id") Integer id, Model model) {
 

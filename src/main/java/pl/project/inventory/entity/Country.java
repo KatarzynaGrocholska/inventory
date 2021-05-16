@@ -3,6 +3,7 @@ package pl.project.inventory.entity;
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "countries")
@@ -20,6 +21,10 @@ public class Country {
 
     @NotNull
     private int days_delivery;
+
+    @OneToMany(mappedBy ="country" ,orphanRemoval = true)
+    @MapKeyJoinColumn(name = "producer_id")
+    private List<Producer> producers;
 
     public Country(){
 
@@ -55,6 +60,14 @@ public class Country {
 
     public void setDays_delivery(int days_delivery) {
         this.days_delivery = days_delivery;
+    }
+
+    public List<Producer> getProducers() {
+        return producers;
+    }
+
+    public void setProducers(List<Producer> producers) {
+        this.producers = producers;
     }
 
     @Override

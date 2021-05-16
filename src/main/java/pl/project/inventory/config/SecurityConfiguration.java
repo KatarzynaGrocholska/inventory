@@ -1,6 +1,6 @@
 package pl.project.inventory.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -16,8 +16,7 @@ import pl.project.inventory.service.UserDetailsServiceImp;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private UserDetailsService userDetailService;
+
 @Bean
 public BCryptPasswordEncoder passwordEncoder(){
     return new BCryptPasswordEncoder();
@@ -46,11 +45,11 @@ public BCryptPasswordEncoder passwordEncoder(){
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/countries/add","/producers/add","/wines/add","/users/add" ).hasAnyRole("ADMIN","USER")
-                .antMatchers("/countries/edit","/producers/edit","/wines/edit","/users/edit").hasRole("ADMIN")
+                .antMatchers("/countries/add","/producers/add","/wines/add","/wines/edit").hasAnyRole("ADMIN","USER")
+                .antMatchers("/countries/edit","/producers/edit","/users/edit").hasRole("ADMIN")
                 .antMatchers("/countries/form","/producers/form","/wines/form", "/users/form").hasRole("ADMIN")
-                .antMatchers("/countries/formEdit","/producers/formEdit","/wines/formEdit","/users/formEdit").hasRole("ADMIN")
-                .antMatchers("/users/list").hasRole("ADMIN")
+                .antMatchers("/countries/formEdit","/producers/formEdit","/wines/formEdit","/users/formEdit").hasAnyRole("ADMIN","USER")
+                .antMatchers("/users/list","/users/add" ).hasRole("ADMIN")
                 .antMatchers("countries/list","wines/list","producers/list").hasAnyRole("ADMIN","USER")
                 .antMatchers("/").hasAnyRole("ADMIN","USER")
                 .antMatchers("/wines/addByUser").hasRole("USER")

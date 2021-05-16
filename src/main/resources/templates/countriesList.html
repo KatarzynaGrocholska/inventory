@@ -33,7 +33,7 @@ xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <td th:text="${country.currency}"></td>
     <td th:text="${country.days_delivery}"></td>
     <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/countries/formEdit/{id}(id=${country.id})}" class="btn btn-primary">Edytuj</a>
-        <a th:href="@{/countries/delete/{id}(id=${country.id})}" class="btn btn-primary">Usun</a>
+        <a th:href="@{/countries/deleteConsent/{id}(id=${country.id})}" class="btn btn-primary">Usun</a>
     </td>
 </tr>
         </tbody>

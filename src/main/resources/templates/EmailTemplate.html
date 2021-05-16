@@ -11,19 +11,23 @@
 
 <div>
 
-      <p>Koncza sie zapasy wina</p>
+    <div  th:if="${wines!= null}">
       <table class="table table-striped">
           <thead>
           <tr>
-              <th>Brakujace wina</th>
+
+              <th>
+             <p>Zamow wina:</p>
+              </th>
 
           </tr>
           </thead>
           <tbody>
+
           <tr th:each="wine : ${wines} ">
               <td th:text="${wine.name}"></td>
 
-          </tr>
+
           </tbody>
       </table>
 
@@ -31,6 +35,10 @@
         </tbody>
 
     </table>
+        </div>
+    <div  th:if="${wines== null}">
+        Nie zamawiaj
+    </div>
 
 </div>
 

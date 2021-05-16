@@ -2,7 +2,6 @@ package pl.project.inventory.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.project.inventory.entity.Producer;
 import pl.project.inventory.entity.Wine;
 import pl.project.inventory.repository.WineRepository;
 

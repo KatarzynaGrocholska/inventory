@@ -24,7 +24,7 @@
                         <th>Cena</th>
                         <th>Ilosc</th>
                         <th>Data ostatniej dostawy </th>
-                        <th>Wskaznik rotacji</th>
+                        <th>Zapotrzebowanie miesieczne</th>
                         <th>Producent</th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')"> </th>
                         <th sec:authorize="hasRole('ROLE_USER')"></th>
@@ -41,7 +41,7 @@
                         <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/wines/formEdit/{id}(id=${wine.id})}" class="btn btn-primary">Edytuj</a>
                             <a th:href="@{/wines/delete/{id}(id=${wine.id})}" class="btn btn-primary">Usun</a>
                         </td>
-                        <td sec:authorize="hasRole('ROLE_USER')"> <a th:href="@{/wines/formEditUser/{id}(id=${wine.id})}" class="btn btn-primary">Zmien ilosc</a></td>
+                        <td sec:authorize="hasRole('ROLE_USER')"> <a th:href="@{/wines/formEdit/{id}(id=${wine.id})}" class="btn btn-primary">Zmien ilosc</a></td>
                     </tr>
                     </tbody>
                 </table>

@@ -1,8 +1,11 @@
 package pl.project.inventory.entity;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "producers")
@@ -24,8 +27,13 @@ public class Producer {
     @NotNull
     private String phone_number;
 
-    @ManyToOne
-    private Country country;
+    @ManyToOne (cascade=CascadeType.ALL)
+   @JoinColumn(name = "country_id")
+   private Country country;
+
+    @OneToMany(mappedBy = "producer",orphanRemoval = true)
+    @MapKeyJoinColumn(name = "wine_id")
+    private List<Wine> wines;
 
     public Producer(){
 
@@ -76,6 +84,14 @@ public class Producer {
 
     public void setCountry(Country country) {
         this.country = country;
+   }
+
+    public List<Wine> getWines() {
+        return wines;
+    }
+
+    public void setWines(List<Wine> wines) {
+        this.wines = wines;
     }
 
     @Override

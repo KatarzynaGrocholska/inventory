@@ -37,7 +37,7 @@
                         <td th:text="${producer.country.country_name}"></td>
 
                         <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/producers/formEdit/{id}(id=${producer.id})}" class="btn btn-primary">Edytuj</a>
-                            <a th:href="@{/producers/delete/{id}(id=${producer.id})}" class="btn btn-primary">Usun</a>
+                            <a th:href="@{/producers/deleteConsent/{id}(id=${producer.id})}" class="btn btn-primary">Usun</a>
                         </td>
                     </tr>
                     </tbody>

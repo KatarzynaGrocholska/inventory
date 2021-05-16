@@ -49,6 +49,14 @@ public class CountryController {
         return "editCountry";
     }
 
+    @GetMapping (path="/countries/deleteConsent/{id}")
+    public String delConsent(@PathVariable(value = "id") Integer id, Model model) {
+        Country country = countryService.getCountryById(id);
+        model.addAttribute("country", country);
+
+        return "ConsentDeleteCountry";
+    }
+
     @GetMapping(path = "/countries/delete/{id}")
     public String delete(@PathVariable(value = "id") Integer id, Model model) {
 

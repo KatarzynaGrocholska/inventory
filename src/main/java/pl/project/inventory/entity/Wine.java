@@ -1,5 +1,8 @@
 package pl.project.inventory.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -24,9 +27,10 @@ public class Wine {
 
     private String date_last_delivery;
 
-    private double monthly;
+    private int monthly;
 
-    @ManyToOne
+   @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "producer_id")
     private Producer producer;
 
     public Wine (){
@@ -74,11 +78,11 @@ public class Wine {
         this.date_last_delivery = date_last_delivery;
     }
 
-    public double getMonthly() {
+    public int getMonthly() {
         return monthly;
     }
 
-    public void setMonthly(double monthly) {
+    public void setMonthly(int monthly) {
         this.monthly = monthly;
     }
 
